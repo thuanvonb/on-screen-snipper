@@ -20,3 +20,6 @@ This is a simple Python program you can use to capture important information and
 - Static capturing: Right now, when screenshot mode is activated, what happening on the screen is continued as it is. It may be a feature or bug, but static capturing should also be possible
 - User interface: Create a user interface instead of only hotkeys with some interesting things but currently I cannot think of any.
 - Resizable screeshot: Maybe useful?
+
+### Example
+![demo.png](demo.png "")
