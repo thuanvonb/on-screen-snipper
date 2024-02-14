@@ -10,11 +10,14 @@ def on_activate_z():
   except:
     app.exit_screenshot_mode()
 
+def destroy():
+  root.destroy()
+
 def start_key_logger():
   hotkeys = {
-    '<ctrl>+<alt>+h': app.trigger_hide_screen,
     '<ctrl>+<alt>+z': on_activate_z,
-    '<ctrl>+<alt>+d': app.destroyframes
+    '<ctrl>+<alt>+d': app.destroyframes,
+    '<ctrl>+<alt>+q': destroy
   }
   with GlobalHotKeys(hotkeys) as listener:
     listener.join()
@@ -25,4 +28,5 @@ app = Application(root)
 thread = Thread(target=start_key_logger, daemon=True)
 thread.start()
 
+print("App started")
 root.mainloop()

@@ -128,7 +128,6 @@ class MiniImage:
     width, height = image.size
     x, y = coord
     self.frame.geometry(f"{width}x{height}+{int(x)}+{int(y)}")
-    self.frame.resizable(False, False)
     self.img = ImageTk.PhotoImage(image)
     self.label = Label(self.frame, image=self.img)
     self.label.place(x=-2, y=-2)

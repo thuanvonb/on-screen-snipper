@@ -1,0 +1,4 @@
+tk
+pynput
+pyautogui
+pillow
