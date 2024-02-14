@@ -22,6 +22,7 @@ class Application():
     self.current_x = None
     self.current_y = None
     self.win_frame_on = False
+    self.screenshot_mode_on = False
 
     self.master.geometry('300x125+100+100')  # set new geometry
     self.master.title('On-screen Snipper')
@@ -69,8 +70,11 @@ class Application():
 
     for miniimage in miniimages:
       miniimage.frame.withdraw()
+    self.screenshot_mode_on = True
 
   def create_screen_canvas(self):
+    if self.screenshot_mode_on:
+      return
     self.enter_screenshot_mode()
 
     self.snip_surface = Canvas(self.picture_frame, cursor="cross", bg="grey38")
@@ -87,7 +91,7 @@ class Application():
 
   def on_button_release(self, event):
     self.master.update()
-    take_bounded_screenshot(self.master, *self.real_coords)
+    take_bounded_screenshot(self.master, *map(int, self.real_coords))
 
     self.exit_screenshot_mode()
     return event
@@ -100,6 +104,7 @@ class Application():
 
     for miniimage in miniimages:
       miniimage.frame.deiconify()
+    self.screenshot_mode_on = False
 
   def on_button_press(self, event):
     # save mouse drag start position
